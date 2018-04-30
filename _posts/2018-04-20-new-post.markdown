@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "A new Blog Post"
+date:   2018-04-20 01:00:00 -0700
+published: true
+categories: blog travel 
+---
+A new blog post
+<!--more-->
+<p>New content down here</p>

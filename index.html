@@ -1,0 +1,115 @@
+---
+# You don't need to edit this file, it's empty on purpose.
+# Edit theme's home layout instead if you wanna make some changes
+# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+layout: home_page
+exclaim: !
+---
+<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+<!-- Google Font: Lato -->
+<link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ '/assets/plugins/font-awesome/css/font-awesome.min.css' | relative_url }}">
+
+<!-- <link rel="stylesheet" href="{{ '/assets/css/about/main.css' | relative_url }}"> -->
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+
+<!-- jQuery -->
+<!-- <script src="{{ '/assets/js/jquery.min.js' | relative_url }}"></script> -->
+
+<script type="text/javascript">
+var displayTime = function(){
+	var now = new Date();
+
+	var formattedHr = ("0" + now.getHours()).slice(-2);
+	var formattedMin = ("0" + now.getMinutes()).slice(-2);
+	var formattedSec = ("0" + now.getSeconds()).slice(-2);
+	var time = formattedHr + ":" + formattedMin;
+	$(".time").html(time);
+}
+
+var getRandomQuote = function(data) {
+	var index = Math.floor(Math.random() * data.length);
+	var q = data[index];
+	$("#quote-txt").html(q.quote);
+	$("#quote-author").html("-- " + q.author);
+}
+
+var greeting = function() {
+	var now = new Date();
+	var greeting = "";
+	var day = "";
+	switch(now.getDay()) {
+		case 0:
+			day = "Sunday";
+			break;
+		case 1:
+			day = "Monday";
+			break;
+		case 2:
+			day = "Tuesday";
+			break;
+		case 3:
+			day = "Wednesday";
+			break;
+		case 4:
+			day = "Thursday";
+			break;
+		case 5:
+			day = "Friday";
+			break;
+		case 6:
+			day = "Saturday";
+			break;
+		default:
+			day = "--";
+	}
+
+	var curHour = now.getHours();
+	if (curHour < 12) {
+		greeting += "morning";
+	} else if (curHour >= 12 && curHour < 17 ) {
+		greeting += "afternoon";
+		//greeting += "afternoon {{ page.exclaim }}";
+	} else {
+		greeting += "evening";
+	}
+
+	$(".period").html(greeting + " " + day);
+}
+
+var showLoc = function(data) {
+	var display = "Lat: " + data.lat;
+	display += " - Lon: " + data.lon;
+	display += " - Country: " + data.country;
+	display += " - City: " + data.city;
+	display += " - IP: " + data.query;
+
+	$("#loc").html(display);
+}
+
+$(document).ready(function(){
+	displayTime();
+	setInterval(displayTime, 1000);
+	greeting();
+	$.getJSON('http://ip-api.com/json', showLoc);
+	$.getJSON('/assets/data/quotes.json', getRandomQuote);
+//$("body").css('background-image', 'url(https://images.unsplash.com/photo-1471922694854-ff1b63b20054?ixlib=rb-0.3.5&q=99&fm=jpg&crop=entropy&cs=tinysrgb&w=2048&fit=max&s=66634d2c2fe8175ab6c9494fde6e9470)');
+});
+</script>
+
+<div class="w3-panel w3-card-4 w3-light-grey" style="width:90%; margin:auto">
+	<p id="quote-txt" class=" w3-large w3-serif">
+		<i class="fa fa-quote-right w3-xxlarge w3-text-red"></i><br>
+  		"Make it as simple as possible, but not simpler."</p>
+ 	<p id="quote-author">Albert Einstein</p>
+</div>
+<div/>
+<div id="center">
+	<div id="centerclock">
+		<h1 class="time">23:04</h1>
+	</div>
+	<div id="greeting">
+		<h2>Good <span class="period">day</span>.</h2>
+	</div>
+	<div id="loc" class="w3-panel w3-blue" style="text-align:center">Country: USA</div>
+</div>

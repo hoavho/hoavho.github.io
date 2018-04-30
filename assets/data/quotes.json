@@ -1,0 +1,11 @@
+---
+---
+[
+{% assign quotes = site.data.quotes %}
+{% for quote in quotes %}
+{
+    "quote": "{{ quote.quote }}",
+    "author": "{{ quote.author }}"
+}{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]
