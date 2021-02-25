@@ -6,5 +6,5 @@ permalink: /cv/
 
 Click on a link to download
 
-- [PDF](https://drive.google.com/open?id=1_nZUKiiwkR9RF7Pwvr78G_FJD15JUbro)
-- [Microsoft Word - Docx](https://drive.google.com/open?id=1DShx5WuCDeRDTkF0rdBE9nZ9Hn9yXifR)
+- [PDF](https://drive.google.com/open?id=11lF-q_V7P5IUiIzCwIi-LfCDAHYPDwUP)
+- [Microsoft Word - Docx](https://drive.google.com/open?id=1ZktFAwk5wbPN3CBgLKFD7FbSp_1HXBEB)
